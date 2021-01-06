@@ -13,7 +13,11 @@ export default class TodoInput extends Component {
 
     handleSubmit = e => { 
         e.preventDefault();
-        console.log(this.state.todoItem);
+        this.props.addTodoItem(this.state.todoItem);
+
+        this.setState({
+            todoItem: "",
+        })
     }
 
     render() {
@@ -21,13 +25,13 @@ export default class TodoInput extends Component {
             <form className="mt-5" onSubmit={ this.handleSubmit }>                 
                 <div className="col-auto">
                     <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
-                    <div className="input-group mb-2">
+                    <div className="input-group mb-3">
                         <div className="input-group-prepend">
                             <div className="input-group-text bg-info text-white">
                                 <i className="fa fa-sticky-note"></i>
                             </div>
                         </div>
-                        <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="add a todo item to list" name="todoItem" onChange={ this.handleChange }/>
+                        <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="add a todo item to list" name="todoItem" value={ this.state.todoItem } onChange={ this.handleChange }/>
                     </div>
                     <button type="add-todo" className="btn btn-block btn-primary">Add Item</button>
                 </div>

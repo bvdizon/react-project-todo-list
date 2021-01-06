@@ -5,10 +5,7 @@ export default class TodoList extends Component {
     render() {
         return (
             <ul className="list-group list-group-flush">
-                <Todo />
-                <Todo />
-                <Todo />
-                <Todo />
+                {this.props.items.map(item => <Todo key={item.id} item={item} />) }
             </ul> 
         )
     }
