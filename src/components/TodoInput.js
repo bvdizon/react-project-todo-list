@@ -1,28 +1,12 @@
 import React, { Component } from 'react'
 
 export default class TodoInput extends Component {
-    state = {
-        todoItem: "",
-    }
-
-    handleChange = e => { 
-        this.setState({
-            todoItem: e.target.value
-        })
-    }
-
-    handleSubmit = e => { 
-        e.preventDefault();
-        this.props.addTodoItem(this.state.todoItem);
-
-        this.setState({
-            todoItem: "",
-        })
-    }
 
     render() {
+        const { item, handleChange, addTodoItem, editItem } = this.props;
+
         return (
-            <form className="mt-5" onSubmit={ this.handleSubmit }>                 
+            <form className="mt-5" onSubmit={(e) => addTodoItem(e)}>                 
                 <div className="col-auto">
                     <label className="sr-only" htmlFor="inlineFormInputGroup">Add a new todo item</label>
                     <div className="input-group mb-3">
@@ -31,9 +15,16 @@ export default class TodoInput extends Component {
                                 <i className="fa fa-sticky-note"></i>
                             </div>
                         </div>
-                        <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="add a todo item to list" name="todoItem" value={ this.state.todoItem } onChange={ this.handleChange }/>
+                        <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="add a todo item to list" name="todoItem" value={item} onChange={(e) => handleChange(e)} required/>
                     </div>
-                    <button type="add-todo" className="btn btn-block btn-info">Add Item</button>
+
+                    {
+                        editItem ? (
+                            <button type="add-todo" className="btn btn-block btn-success">Edit Item</button>
+                        ) : (
+                            <button type="add-todo" className="btn btn-block btn-info">Add Item</button>
+                        )
+                    }
                 </div>
             </form>
         )
