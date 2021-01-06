@@ -4,9 +4,21 @@ import Todo from './Todo';
 export default class TodoList extends Component {
     render() {
         return (
-            <ul className="list-group list-group-flush">
-                {this.props.items.map(item => <Todo key={item.id} item={item} />) }
-            </ul> 
+            <section className="px-3">
+                <ul className="list-group list-group-flush">
+                    {this.props.items.map(item => <Todo key={item.id} item={item} />) }
+                </ul> 
+
+                {
+                    this.props.items.length > 0 ? (
+                        <button type="button" className="btn btn-block btn-outline-danger mt-3" onClick={ this.props.clearList }>Clear List Items</button>
+                    ) : (
+                            <h5 className="text-center">Nice. All caught up! <i className="fa fa-coffee text-primary"></i></h5>
+                    )
+                }
+                
+
+            </section>
         )
     }
 }

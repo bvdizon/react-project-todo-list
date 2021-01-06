@@ -24,7 +24,7 @@ export default class TodoInput extends Component {
         return (
             <form className="mt-5" onSubmit={ this.handleSubmit }>                 
                 <div className="col-auto">
-                    <label className="sr-only" htmlFor="inlineFormInputGroup">Username</label>
+                    <label className="sr-only" htmlFor="inlineFormInputGroup">Add a new todo item</label>
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
                             <div className="input-group-text bg-info text-white">
@@ -33,7 +33,7 @@ export default class TodoInput extends Component {
                         </div>
                         <input type="text" className="form-control" id="inlineFormInputGroup" placeholder="add a todo item to list" name="todoItem" value={ this.state.todoItem } onChange={ this.handleChange }/>
                     </div>
-                    <button type="add-todo" className="btn btn-block btn-primary">Add Item</button>
+                    <button type="add-todo" className="btn btn-block btn-info">Add Item</button>
                 </div>
             </form>
         )
