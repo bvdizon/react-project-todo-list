@@ -27,6 +27,14 @@ export default class App extends Component {
     })
   }
 
+  deleteItem = id => {
+    const filteredItems = this.state.items.filter(item => item.id !== id);
+
+    this.setState({
+      items: filteredItems
+    })
+  }
+
   render() {
     
     return (
@@ -34,7 +42,7 @@ export default class App extends Component {
         <h2 className="mt-5 mb-3 text-center">My ToDo List</h2>
         <TodoInput addTodoItem={ this.addTodoItem }/>
         <h2 className="mt-5 mb-3 text-center">Things to work on ... </h2>
-        <TodoList items={this.state.items} clearList={this.clearList} />
+        <TodoList items={this.state.items} clearList={this.clearList} deleteItem={this.deleteItem} />
       </section>
     )
   }
