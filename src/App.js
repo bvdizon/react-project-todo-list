@@ -8,7 +8,7 @@ export default class App extends Component {
   render() {
     
     return (
-      <section className="container">
+      <section className="container" style={{maxWidth: '600px', margin: '0 auto'}}>
         <TodoInput />
         <h2 className="mt-5 mb-3 text-center">ToDo List</h2>
         <TodoList />
